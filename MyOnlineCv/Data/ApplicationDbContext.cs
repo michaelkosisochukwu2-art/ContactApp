@@ -10,6 +10,7 @@ namespace MyOnlineCv.Data
         public DbSet<EducationItem> EducationItems { get; set; }
         public DbSet<ExperienceItem> ExperienceItems { get; set; }
         public DbSet<SkillItem> SkillItems { get; set; }
+        public DbSet<ContactRequest> ContactRequests { get; set; }
         public DbSet<GalleryItem> GalleryItems { get; set; }
 
         // Register TaxCalculationResult table in SQL Database

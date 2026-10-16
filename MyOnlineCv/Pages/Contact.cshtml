@@ -1,0 +1,58 @@
+﻿@page
+@model MyOnlineCv.Pages.ContactModel
+@{
+    ViewData["Title"] = "Contact Us";
+}
+
+<div class="container mt-4">
+    <h2>Contact Us</h2>
+    <hr />
+
+    <div class="row">
+        <!-- Contact Form -->
+        <div class="col-md-6">
+            <h4>Send a Message</h4>
+            <form method="post">
+                <div class="form-group mb-3">
+                    <label>Name</label>
+                    <input asp-for="ContactRequest.Name" class="form-control" required />
+                </div>
+                <div class="form-group mb-3">
+                    <label>Email</label>
+                    <input asp-for="ContactRequest.Email" type="email" class="form-control" required />
+                </div>
+                <div class="form-group mb-3">
+                    <label>Subject</label>
+                    <input asp-for="ContactRequest.Subject" class="form-control" required />
+                </div>
+                <div class="form-group mb-3">
+                    <label>Message</label>
+                    <textarea asp-for="ContactRequest.Message" class="form-control" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+        <!-- Submitted Inquiries List -->
+        <div class="col-md-6">
+            <h4>Submitted Messages</h4>
+            @if (!Model.Messages.Any())
+            {
+                <p class="text-muted">No messages submitted yet.</p>
+            }
+            else
+            {
+                <ul class="list-group">
+                    @foreach (var msg in Model.Messages)
+                    {
+                        <li class="list-group-item">
+                            <strong>@msg.Name</strong> (@msg.Email)<br />
+                            <small class="text-secondary">@msg.Subject</small>
+                            <p class="mb-0 mt-1">@msg.Message</p>
+                        </li>
+                    }
+                </ul>
+            }
+        </div>
+    </div>
+</div>
